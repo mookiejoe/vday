@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Date Invitation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #ffd9e3; /* Pink background color */
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        form {
+            background-color: #ffffff; /* White form background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 8px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+            vertical-align: middle; /* Align the radio button with the label text */
+        }
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        input[type="submit"] {
+            background-color: #ff4d4d;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .popup-message {
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* White background color */
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        .hidden {
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: #ff4d4d;">Be My Valentine?</h1>
+
+    <div class="form-container" id="form-container">
+        <form id="valentine-form" action="#" method="post" onsubmit="showPopup(); return false;">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <p style="color: #ff4d4d;">Select a date for our special day:</p>
+
+            <label for="wednesday">
+                <input type="radio" id="wednesday" name="date" value="Wednesday">
+                Wednesday Valentines day
+            </label>
+
+            <label for="friday">
+                <input type="radio" id="friday" name="date" value="Friday">
+                Friday (near Valentine's)
+            </label>
+
+            <label for="saturday">
+                <input type="radio" id="saturday" name="date" value="Saturday">
+                Saturday (near Valentine's)
+            </label>
+
+            <label for="sunday">
+                <input type="radio" id="sunday" name="date" value="Sunday">
+                Sunday (near Valentine's)
+            </label>
+
+            <input type="submit" value="Ask">
+        </form>
+    </div>
+
+    <script>
+        function showPopup() {
+            const selectedDate = document.querySelector('input[name="date"]:checked').value;
+            const userName = document.getElementById('name').value;
+            const formContainer = document.getElementById('form-container');
+            const form = document.getElementById('valentine-form');
+            const popupMessage = document.createElement('div');
+            popupMessage.className = 'popup-message';
+            popupMessage.innerHTML = `
+                <p>Hi ${userName},</p>
+                <p>Your date with me has been confirmed, and you are now my Valentine forever.</p>
+                <br>
+                <strong>When:</strong> ${selectedDate}<br>
+                <strong>With who:</strong> Ur mans<br>
+                <strong>Where:</strong> Who knows bruh!<br>
+                <strong>Dress code:</strong> The usual; smashable and cute, it might be cold, be prepared.
+            `;
+            formContainer.innerHTML = ''; // Clear the form container
+            formContainer.appendChild(popupMessage);
+        }
+    </script>
+
+</body>
+</html>
